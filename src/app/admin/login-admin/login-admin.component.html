@@ -1,1 +1,47 @@
-<p>login-admin works!</p>
+<form class="card" [formGroup]="form" (ngSubmit) = "sumbit()">
+    <h2>Войти в панель Администратора</h2>
+
+    <div
+     [ngClass] = "{invalid: form.get('email').touched && form.get('email').invalid}"
+     class="form-control"
+     >
+        <label for="email">Email</label>
+        <input type="email" id="email" formControlName="email">
+        <div
+        *ngIf = "form.get('email').touched && form.get('email').invalid "
+        class="validation">
+            <small *ngIf= "form.get('email').errors.required"
+            >Поле Email дожлно быть email</small>
+            <small *ngIf= "form.get('email').errors.email"
+            >Введите поле Email</small>
+        </div>
+    </div>
+
+    <div
+    [ngClass] = "{invalid: form.get('password').touched && form.get('password').invalid}"
+    class="form-control">
+        <label for="password">Password</label>
+        <input type="password" id="password" formControlName="password">
+        <div
+        *ngIf="form.get('password').touched && form.get('password').invalid"
+        class="validation">
+            <small *ngIf="form.get('password').errors.required"
+            >Введите пароль</small>
+            <small *ngIf="form.get('password').errors.minlength"
+            >Пароль должен быть не менее
+             {{form.get('password').errors.minlength.requiredLength}}
+              символов, сейчас
+             {{form.get('password').errors.minlength.actualLength}}
+            </small>
+        </div>
+    </div>
+
+    <button
+      type="submit"
+      class="btn btn-primary"
+     
+      >Войти</button>
+</form>
+
+<!-- [disabled] = "form.invalid" -->
+
