@@ -10,6 +10,7 @@ import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { CreatePageComponent } from './admin/create-page/create-page.component';
 import { EditPageComponent } from './admin/edit-page/edit-page.component';
 import { PostComponent } from './shared/components/post/post.component';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { PostComponent } from './shared/components/post/post.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    SharedModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
