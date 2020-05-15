@@ -12,7 +12,7 @@ export class AuthServices {
   constructor(private http: HttpClient) {}
 
   get token(): string {
-    const expiresDate = new Date(localStorage.getItem('fb-tokex-exp'));
+    const expiresDate = new Date(localStorage.getItem('fb-token-exp'));
     if (new Date() > expiresDate) {
       this.logout();
       return null;
@@ -61,6 +61,7 @@ export class AuthServices {
         new Date().getTime() + +response.expiresIn * 1000
       );
       localStorage.setItem('fb-token', response.idToken);
+
       localStorage.setItem('fb-token-exp', expDate.toString());
     } else {
       localStorage.clear();

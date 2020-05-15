@@ -6,9 +6,6 @@ import { AppComponent } from './app.component';
 import { MainLayoutComponent } from './shared/components/main-layout/main-layout.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { PostPageComponent } from './post-page/post-page.component';
-import { DashboardComponent } from './admin/dashboard/dashboard.component';
-import { CreatePageComponent } from './admin/create-page/create-page.component';
-import { EditPageComponent } from './admin/edit-page/edit-page.component';
 import { PostComponent } from './shared/components/post/post.component';
 import { SharedModule } from './shared/shared.module';
 
@@ -18,17 +15,10 @@ import { SharedModule } from './shared/shared.module';
     MainLayoutComponent,
     HomePageComponent,
     PostPageComponent,
-    DashboardComponent,
-    CreatePageComponent,
-    EditPageComponent,
-    PostComponent    
+    PostComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    SharedModule,
-  ],
+  imports: [BrowserModule, AppRoutingModule, SharedModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { User } from 'src/app/shared/interfaces';
 import { AuthServices } from '../shared/services/auth.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-login-admin',
@@ -11,12 +11,22 @@ import { Router } from '@angular/router';
 })
 export class LoginAdminComponent implements OnInit {
   form: FormGroup;
-
+  message: string;
   submitted = false;
 
-  constructor(public auth: AuthServices, private router: Router) {}
+  constructor(
+    public auth: AuthServices,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): any {
+    this.route.queryParams.subscribe((params: Params) => {
+      if (params['loginAgain']) {
+        this.message = 'Введите данные';
+      }
+    });
+
     this.form = new FormGroup({
       email: new FormControl(null, [Validators.email, Validators.required]),
       password: new FormControl(null, [
