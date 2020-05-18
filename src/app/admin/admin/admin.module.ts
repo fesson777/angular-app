@@ -10,6 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { AuthGuard } from '../shared/services/auth.guard';
 import { SearchPipe } from '../shared/search.pipe';
+import { PostPageComponent } from 'src/app/post-page/post-page.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { SearchPipe } from '../shared/search.pipe';
     FormsModule,
     ReactiveFormsModule,
     SharedModule,
+
     RouterModule.forChild([
       {
         path: '',

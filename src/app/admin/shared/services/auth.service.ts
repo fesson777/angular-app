@@ -49,7 +49,7 @@ export class AuthServices {
         this.error$.next('Неверный Email');
         break;
       case 'EMAIL_NOT_FOUND':
-        this.error$.next('Такого Email нету');
+        this.error$.next('Такого Email не существует');
         break;
     }
     return throwError(error);

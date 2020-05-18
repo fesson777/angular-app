@@ -12,6 +12,8 @@ import { Post } from 'src/app/shared/interfaces';
 })
 export class EditPageComponent implements OnInit {
   form: FormGroup;
+  post: Post;
+  submitted: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -26,6 +28,7 @@ export class EditPageComponent implements OnInit {
         })
       )
       .subscribe((post: Post) => {
+        this.post = post;
         this.form = new FormGroup({
           title: new FormControl(post.title, Validators.required),
           text: new FormControl(post.text, Validators.required),
@@ -33,5 +36,20 @@ export class EditPageComponent implements OnInit {
       });
   }
 
-  submit() {}
+  submit() {
+    if (this.form.invalid) {
+      return;
+    }
+
+    this.submitted = true;
+    this.postsService
+      .update({
+        ...this.post,
+        text: this.post.text,
+        title: this.post.title,
+      })
+      .subscribe(() => {
+        this.submitted = false;
+      });
+  }
 }
